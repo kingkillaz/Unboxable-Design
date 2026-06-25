@@ -1,0 +1,266 @@
+
+body{margin:0;background:#0A0A0A;color:white;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body::before,body::after{display:none}
+.lux-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  overflow:hidden;
+}
+
+/* CINEMATIC LIGHT RAYS */
+
+.ray{
+  position:absolute;
+  width:700px;
+  height:120px;
+  filter:blur(20px);
+  opacity:.45;
+}
+
+.ray1{
+  top:-40px;
+  left:-120px;
+
+  transform:rotate(-45deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212,175,55,.9),
+      transparent
+    );
+
+  animation:
+    drift1 18s ease-in-out infinite;
+}
+
+.ray2{
+  bottom:-40px;
+  right:-120px;
+
+  transform:rotate(-45deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212,175,55,.9),
+      transparent
+    );
+
+  animation:
+    drift2 22s ease-in-out infinite;
+}
+
+/* GOLD DUST */
+
+.particle{
+  position:absolute;
+  border-radius:50%;
+
+  background:#d4af37;
+
+  box-shadow:
+    0 0 4px rgba(212,175,55,.25),
+    0 0 10px rgba(212,175,55,.15);
+
+  animation:
+    floatSand linear infinite,
+    shimmer var(--shineSpeed) ease-in-out infinite;
+}
+
+/* WIND MOVEMENT */
+
+@keyframes floatSand{
+
+  0%{
+    transform:
+      translate(0,0);
+  }
+
+  50%{
+    transform:
+      translate(40px,-25px);
+  }
+
+  100%{
+    transform:
+      translate(80px,-50px);
+  }
+}
+
+/* RANDOM BRIGHTNESS */
+
+@keyframes shimmer{
+
+  0%{
+    opacity:.08;
+    filter:brightness(1);
+
+    box-shadow:
+      0 0 4px rgba(212,175,55,.15);
+  }
+
+  25%{
+    opacity:.15;
+    filter:brightness(1.2);
+  }
+
+  50%{
+    opacity:1;
+    filter:brightness(3);
+
+    box-shadow:
+      0 0 8px rgba(212,175,55,.6),
+      0 0 25px rgba(212,175,55,.3);
+  }
+
+  100%{
+    opacity:.08;
+    filter:brightness(1);
+
+    box-shadow:
+      0 0 4px rgba(212,175,55,.15);
+  }
+}
+
+/* LIGHT RAY MOTION */
+
+@keyframes drift1{
+
+  0%,100%{
+    opacity:.25;
+
+    transform:
+      rotate(-45deg)
+      translateX(0);
+  }
+
+  50%{
+    opacity:.55;
+
+    transform:
+      rotate(-45deg)
+      translateX(60px);
+  }
+}
+
+@keyframes drift2{
+
+  0%,100%{
+    opacity:.2;
+
+    transform:
+      rotate(-45deg)
+      translateX(0);
+  }
+
+  50%{
+    opacity:.5;
+
+    transform:
+      rotate(-45deg)
+      translateX(-60px);
+  }
+}/* WEBSITE LAYOUT */
+
+a{
+  text-decoration:none;
+}
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+
+  background:rgba(10,10,10,.6);
+  backdrop-filter:blur(14px);
+
+  padding:20px 40px;
+
+  border-bottom:1px solid rgba(212,175,55,.15);
+
+  display:flex;
+  gap:24px;
+}
+
+.nav a{
+  color:#d4af37;
+  transition:.3s;
+}
+
+.nav a:hover{
+  color:#f0d27a;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px;
+}
+
+.hero{
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:rgba(20,20,20,.75);
+  border:1px solid rgba(212,175,55,.10);
+
+  border-radius:20px;
+  padding:24px;
+
+  backdrop-filter:blur(12px);
+
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+
+  border-color:rgba(212,175,55,.25);
+
+  box-shadow:
+    0 0 30px rgba(212,175,55,.08);
+}
+
+.btn{
+  display:inline-block;
+
+  margin-top:20px;
+
+  background:#d4af37;
+  color:black;
+
+  padding:14px 24px;
+
+  border-radius:12px;
+
+  font-weight:bold;
+
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 8px 25px rgba(212,175,55,.25);
+}
+.hero-badge{display:inline-block;border:1px solid rgba(212,175,55,.3);padding:8px 14px;border-radius:999px;color:#d4af37;margin-bottom:20px}
+.gold-divider{width:120px;height:2px;background:#d4af37;margin:30px 0}
+.logo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;opacity:.7;text-align:center;padding:20px 0}
+.card p{color:#bdbdbd;line-height:1.6}
+.hero>*{animation:fadeup 1.2s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
