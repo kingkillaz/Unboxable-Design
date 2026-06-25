@@ -7,7 +7,7 @@ export default function BackgroundParticles() {
 
   useEffect(() => {
     setParticles(
-      Array.from({ length: 340 }).map((_, i) => ({
+      Array.from({ length: 70 }).map((_, i) => ({
         id: i,
 
         left: Math.random() * 100,
