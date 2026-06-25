@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unboxable Design — Premium Creative Studio</title>
+<meta name="description" content="Award-winning branding, visual identity, and digital design. Built to be seen. Designed to be remembered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden}
+body{background:#0A0A0A;color:#fff;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* BG */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:strict}
+.ray{position:absolute;height:90px;width:700px;filter:blur(22px)}
+.ray-1{top:-30px;left:-100px;transform:rotate(-45deg);background:linear-gradient(90deg,transparent,rgba(212,175,55,.75),transparent);opacity:.38;animation:r1 18s ease-in-out infinite}
+.ray-2{bottom:-30px;right:-100px;transform:rotate(-45deg);background:linear-gradient(90deg,transparent,rgba(212,175,55,.75),transparent);opacity:.28;animation:r2 23s ease-in-out infinite}
+.bg::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.055) 0%,transparent 70%);top:-150px;left:-100px;animation:g1 20s ease-in-out infinite}
+.bg::after{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.04) 0%,transparent 70%);bottom:-200px;right:-100px;animation:g2 26s ease-in-out infinite}
+@keyframes r1{0%,100%{opacity:.28;transform:rotate(-45deg) translateX(0)}50%{opacity:.5;transform:rotate(-45deg) translateX(60px)}}
+@keyframes r2{0%,100%{opacity:.18;transform:rotate(-45deg) translateX(0)}50%{opacity:.42;transform:rotate(-45deg) translateX(-60px)}}
+@keyframes g1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,30px)}}
+@keyframes g2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-50px)}}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+.page{display:none}
+.page.active{display:block;animation:fade .32s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;height:72px;background:rgba(10,10,10,.8);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(212,175,55,.1)}
+.nav-inner{height:72px;display:flex;align-items:center}
+.logo{font-size:1.05rem;font-weight:900;letter-spacing:.06em;cursor:pointer;transition:opacity .2s;flex-shrink:0}
+.logo:hover{opacity:.65}
+.logo .g{color:#d4af37}
+.nav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
+.nl{background:none;border:none;font-family:inherit;cursor:pointer;padding:9px 14px;border-radius:10px;font-size:.875rem;font-weight:500;color:rgba(255,255,255,.5);transition:background .2s,color .2s}
+.nl:hover{background:rgba(255,255,255,.05);color:#fff}
+.nl.active{color:#d4af37}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:14px;flex-shrink:0}
+.btn-gs{background:#d4af37;color:#000;border:none;font-family:inherit;font-weight:700;font-size:.825rem;padding:9px 22px;border-radius:999px;cursor:pointer;letter-spacing:.02em;transition:all .2s}
+.btn-gs:hover{background:#f0d27a;transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,175,55,.3)}
+.burger{display:none;flex-direction:column;gap:5px;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);cursor:pointer;align-items:center;justify-content:center}
+.burger span{width:16px;height:1.5px;background:#fff;border-radius:2px;transition:.2s}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-family:inherit;font-weight:700;font-size:.9rem;letter-spacing:.02em;border:none;cursor:pointer;transition:all .25s}
+.btn-gold{background:#d4af37;color:#000}
+.btn-gold:hover{background:#f0d27a;transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,175,55,.3)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.14)}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.32);transform:translateY(-2px)}
+.btn-wide{width:100%;justify-content:center}
+
+/* EYEBROW */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#d4af37;margin-bottom:16px}
+.eyebrow::before{content:'';width:22px;height:1px;background:#d4af37;flex-shrink:0}
+
+/* HERO */
+.hero{padding:88px 0 80px;min-height:calc(100vh - 72px);display:flex;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,175,55,.22);background:rgba(212,175,55,.05);padding:8px 16px;border-radius:999px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#d4af37;margin-bottom:32px}
+.bdot{width:6px;height:6px;border-radius:50%;background:#d4af37;flex-shrink:0;animation:blink 2.5s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.18}}
+.hero-title{font-size:clamp(4rem,9vw,8rem);font-weight:900;line-height:1;letter-spacing:-.045em;margin-bottom:32px;overflow:visible}
+.grad{background:linear-gradient(135deg,#fef08a 0%,#facc15 35%,#d4af37 65%,#a16207 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.42);max-width:460px;line-height:1.82;margin-bottom:44px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border:1px solid rgba(212,175,55,.1);border-radius:20px;overflow:hidden;background:rgba(212,175,55,.02)}
+.stat{padding:36px 40px;text-align:center;border-right:1px solid rgba(212,175,55,.1)}
+.stat:last-child{border-right:none}
+.stat-n{display:block;font-size:2.8rem;font-weight:900;letter-spacing:-.04em;background:linear-gradient(135deg,#fef08a,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:7px}
+.stat-l{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.32)}
+
+/* SECTIONS */
+.section{padding:100px 0}
+.sh{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.sp{font-size:1rem;color:rgba(255,255,255,.4);max-width:500px;line-height:1.8;margin-bottom:44px}
+
+/* GRID */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+
+/* CARDS */
+.card{position:relative;background:rgba(14,14,14,.92);border:1px solid rgba(212,175,55,.08);border-radius:18px;padding:30px;transition:transform .3s,border-color .3s,box-shadow .3s;overflow:hidden}
+.card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 15%,rgba(212,175,55,.04),transparent 55%);pointer-events:none}
+.card:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.2);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(212,175,55,.04)}
+.card-ico{width:44px;height:44px;border-radius:11px;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.13);display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:18px}
+.card h3{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;margin-bottom:9px}
+.card p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.78}
+
+/* BRANDS STRIP */
+.brands{display:flex;gap:44px;align-items:center;justify-content:center;flex-wrap:wrap;padding:32px 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:80px}
+.brands div{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.17);transition:color .3s;cursor:default}
+.brands div:hover{color:rgba(212,175,55,.48)}
+
+/* CTA BAND */
+.cta-band{padding:110px 0;border-top:1px solid rgba(212,175,55,.07);border-bottom:1px solid rgba(212,175,55,.07);background:radial-gradient(ellipse 80% 70% at 50% 100%,rgba(212,175,55,.07),transparent);text-align:center}
+.cta-band .sp{margin:14px auto 36px}
+
+/* PAGE HERO */
+.phead{padding:80px 0 72px;border-bottom:1px solid rgba(212,175,55,.07);margin-bottom:80px}
+.crumb{font-size:.8rem;color:rgba(255,255,255,.28);margin-bottom:20px}
+.crumb a{cursor:pointer;transition:color .2s}
+.crumb a:hover{color:#d4af37}
+.ptitle{font-size:clamp(3rem,7vw,6rem);font-weight:900;letter-spacing:-.045em;line-height:1;margin-bottom:22px;overflow:visible}
+.psub{font-size:1.05rem;color:rgba(255,255,255,.4);max-width:520px;line-height:1.78}
+
+/* PORTFOLIO GRID */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pcard{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.pcard:hover{transform:scale(1.025);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(212,175,55,.18)}
+.pcard-bg{position:absolute;inset:0}
+.pc-1{background:radial-gradient(circle at 30% 40%,rgba(212,175,55,.18) 0%,transparent 55%),radial-gradient(circle at 75% 70%,rgba(180,140,20,.1) 0%,transparent 40%),linear-gradient(135deg,#140e00,#0d0800)}
+.pc-2{background:radial-gradient(circle at 60% 30%,rgba(180,180,200,.08) 0%,transparent 50%),radial-gradient(circle at 20% 80%,rgba(212,175,55,.06) 0%,transparent 40%),linear-gradient(135deg,#070710,#050508)}
+.pc-3{background:radial-gradient(circle at 50% 20%,rgba(212,175,55,.14) 0%,transparent 45%),radial-gradient(circle at 80% 80%,rgba(212,100,55,.06) 0%,transparent 35%),linear-gradient(135deg,#120a00,#0a0600)}
+.pc-4{background:radial-gradient(circle at 25% 60%,rgba(212,175,55,.12) 0%,transparent 50%),radial-gradient(circle at 70% 25%,rgba(150,120,30,.08) 0%,transparent 40%),linear-gradient(135deg,#0e0e00,#080800)}
+.pc-5{background:radial-gradient(circle at 40% 50%,rgba(80,120,200,.08) 0%,transparent 50%),radial-gradient(circle at 75% 20%,rgba(212,175,55,.1) 0%,transparent 40%),linear-gradient(135deg,#04040e,#020208)}
+.pc-6{background:radial-gradient(circle at 60% 40%,rgba(212,175,55,.16) 0%,transparent 50%),radial-gradient(circle at 20% 70%,rgba(212,130,30,.08) 0%,transparent 40%),linear-gradient(135deg,#150f00,#0c0800)}
+.pcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.2) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;opacity:0;transition:opacity .28s}
+.pcard:hover .pcard-overlay{opacity:1}
+.pcard-cat{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#d4af37;margin-bottom:4px}
+.pcard-name{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.pcard-label{position:absolute;top:16px;left:16px;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.58);background:rgba(0,0,0,.55);padding:5px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.08);z-index:1}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(212,175,55,.08);border-radius:20px;overflow:hidden;margin-top:48px}
+.pstep{padding:32px 26px;border-right:1px solid rgba(212,175,55,.08);background:rgba(12,12,12,.8);transition:background .3s}
+.pstep:last-child{border-right:none}
+.pstep:hover{background:rgba(212,175,55,.025)}
+.pstep-n{font-size:2.2rem;font-weight:900;letter-spacing:-.04em;color:rgba(212,175,55,.12);line-height:1;margin-bottom:16px}
+.pstep-t{font-size:.95rem;font-weight:700;margin-bottom:7px}
+.pstep-d{font-size:.82rem;color:rgba(255,255,255,.36);line-height:1.72}
+
+/* ABOUT */
+.mission{font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:300;line-height:1.72;letter-spacing:-.02em;color:rgba(255,255,255,.6);max-width:820px}
+.mission em{font-style:normal;font-weight:700;color:#fff}
+.gold-div{width:48px;height:2px;background:linear-gradient(90deg,#d4af37,transparent);margin:44px 0}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:72px;align-items:start}
+.form-field{margin-bottom:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.flabel{display:block;font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.finput,.fselect,.ftextarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(212,175,55,.1);border-radius:11px;padding:13px 17px;color:#fff;font-size:.875rem;font-family:inherit;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none}
+.finput:focus,.fselect:focus,.ftextarea:focus{border-color:rgba(212,175,55,.38);background:rgba(212,175,55,.02)}
+.finput::placeholder,.ftextarea::placeholder{color:rgba(255,255,255,.18)}
+.ftextarea{min-height:130px;resize:vertical;line-height:1.65}
+.fselect option{background:#1a1a1a;color:#fff}
+.cinfo-item{display:flex;align-items:flex-start;gap:15px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.cinfo-item:first-child{border-top:1px solid rgba(255,255,255,.05)}
+.cinfo-ico{width:40px;height:40px;border-radius:10px;background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.13);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cinfo-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);margin-bottom:3px}
+.cinfo-val{font-size:.9rem;color:rgba(255,255,255,.78);font-weight:500}
+.cinfo-val a:hover{color:#d4af37;transition:color .2s}
+.cinfo-note{margin-top:36px;padding:24px;background:rgba(212,175,55,.04);border:1px solid rgba(212,175,55,.1);border-radius:14px}
+.cinfo-note-t{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);margin-bottom:8px}
+.cinfo-note p{font-size:.85rem;color:rgba(255,255,255,.42);line-height:1.78}
+
+/* FOOTER */
+.footer{border-top:1px solid rgba(255,255,255,.05);padding:60px 0 44px;margin-top:60px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;margin-bottom:44px}
+.footer-logo{font-size:1.05rem;font-weight:900;letter-spacing:.05em}
+.footer-tagline{font-size:.85rem;color:rgba(255,255,255,.25);margin-top:10px;max-width:240px;line-height:1.65}
+.footer-col-t{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.26);margin-bottom:16px}
+.footer a{display:block;font-size:.85rem;color:rgba(255,255,255,.4);margin-bottom:11px;transition:color .2s;cursor:pointer}
+.footer a:hover{color:#d4af37}
+.footer-bottom{padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.2)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .process{grid-template-columns:repeat(2,1fr)}
+  .pstep:nth-child(2){border-right:none}
+  .pstep:nth-child(1),.pstep:nth-child(2){border-bottom:1px solid rgba(212,175,55,.08)}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .burger{display:flex}
+  .nav-menu{position:fixed;top:72px;right:0;width:min(80vw,300px);height:calc(100vh - 72px);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:3px;background:#111;border-left:1px solid rgba(212,175,55,.1);padding:16px;transform:translateX(110%);transition:transform .25s;overflow-y:auto;visibility:hidden;z-index:99}
+  .nav-menu.open{transform:none;visibility:visible}
+  .nl{flex:0 0 auto;text-align:left}
+  .btn-gs{display:none}
+  .g3,.g2{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:1fr}
+  .process{grid-template-columns:1fr}
+  .pstep{border-right:none!important;border-bottom:1px solid rgba(212,175,55,.08)}
+  .pstep:last-child{border-bottom:none}
+  .stats-row{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid rgba(212,175,55,.1)}
+  .stat:last-child{border-bottom:none}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .cta-band{padding:80px 0}
+  .form-row{grid-template-columns:1fr}
+  .hero{padding:64px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"><div class="ray ray-1"></div><div class="ray ray-2"></div></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo" onclick="go('home')">UNBOXABLE<span class="g">.</span></div>
+    <nav class="nav-menu" id="menu">
+      <button class="nl" data-nav="home" onclick="go('home')">Home</button>
+      <button class="nl" data-nav="portfolio" onclick="go('portfolio')">Portfolio</button>
+      <button class="nl" data-nav="services" onclick="go('services')">Services</button>
+      <button class="nl" data-nav="about" onclick="go('about')">About</button>
+      <button class="nl" data-nav="contact" onclick="go('contact')">Contact</button>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-gs" onclick="go('contact')">Get Started</button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HOME -->
+<main class="page active" id="page-home">
+  <section class="hero">
+    <div class="wrap">
+      <div class="badge"><span class="bdot"></span>Premium Creative Studio</div>
+      <h1 class="hero-title">DESIGN<br><span class="grad">WITHOUT</span><br>LIMITS.</h1>
+      <p class="hero-sub">We craft brands that command attention, identities that endure, and visuals that leave a lasting impression.</p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" onclick="go('portfolio')">Explore Our Work</button>
+        <button class="btn btn-ghost" onclick="go('contact')">Start a Project</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-n">50+</span><span class="stat-l">Projects Delivered</span></div>
+        <div class="stat"><span class="stat-n">30+</span><span class="stat-l">Happy Clients</span></div>
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l">Years of Excellence</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="sh">Studio Services</h2>
+      <p class="sp">Every engagement is bespoke. We go deep so your brand goes far.</p>
+      <div class="grid g3">
+        <div class="card"><div class="card-ico">◈</div><h3>Logo Design</h3><p>Distinctive marks built for recognition across every medium — from billboard to favicon.</p></div>
+        <div class="card"><div class="card-ico">◉</div><h3>Brand Identity</h3><p>Complete visual systems: typography, colour, tone of voice, and everything in between.</p></div>
+        <div class="card"><div class="card-ico">▣</div><h3>Social Media Design</h3><p>Premium content designed to stop the scroll and build a recognisable presence.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:32px">
+        <button class="btn btn-ghost" onclick="go('services')">View All Services</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;margin-bottom:24px">Trusted By</div>
+    <div class="brands">
+      <div>Apex Studio</div><div>Lumière Co.</div><div>Vortex Media</div><div>Crest Group</div><div>Noir Label</div>
+    </div>
+  </div>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center">Ready?</div>
+      <h2 class="sh">Let's build something<br>unforgettable.</h2>
+      <p class="sp" style="max-width:420px;margin:14px auto 36px">Tell us about your project and we'll come back with a plan within 48 hours.</p>
+      <button class="btn btn-gold" onclick="go('contact')">Get in Touch</button>
+    </div>
+  </section>
+</main>
+
+<!-- PORTFOLIO -->
+<main class="page" id="page-portfolio">
+  <section class="phead">
+    <div class="wrap">
+      <p class="crumb"><a onclick="go('home')">Home</a> / Portfolio</p>
+      <div class="eyebrow">Selected Work</div>
+      <h1 class="ptitle">Brands we've<br><span class="grad">helped</span><br>define.</h1>
+      <p class="psub">A curated selection of projects spanning identity, direction, and design. Every piece tells a story.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="port-grid">
+        <div class="pcard"><div class="pcard-bg pc-1"></div><span class="pcard-label">Brand Identity</span><div class="pcard-overlay"><span class="pcard-cat">Brand Identity</span><span class="pcard-name">Apex Luxury Brand</span></div></div>
+        <div class="pcard"><div class="pcard-bg pc-2"></div><span class="pcard-label">Visual Direction</span><div class="pcard-overlay"><span class="pcard-cat">Visual Direction</span><span class="pcard-name">Noir Automotive</span></div></div>
+        <div class="pcard"><div class="pcard-bg pc-3"></div><span class="pcard-label">Print Design</span><div class="pcard-overlay"><span class="pcard-cat">Print Design</span><span class="pcard-name">Lumière Poster Series</span></div></div>
+        <div class="pcard"><div class="pcard-bg pc-4"></div><span class="pcard-label">Packaging</span><div class="pcard-overlay"><span class="pcard-cat">Packaging</span><span class="pcard-name">Crest Packaging</span></div></div>
+        <div class="pcard"><div class="pcard-bg pc-5"></div><span class="pcard-label">Brand Identity</span><div class="pcard-overlay"><span class="pcard-cat">Brand Identity</span><span class="pcard-name">Vortex Digital Brand</span></div></div>
+        <div class="pcard"><div class="pcard-bg pc-6"></div><span class="pcard-label">Social Media</span><div class="pcard-overlay"><span class="pcard-cat">Social Media</span><span class="pcard-name">Soleil Social Campaign</span></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center">Next Up</div>
+      <h2 class="sh">Your brand could<br>be here.</h2>
+      <p class="sp" style="max-width:400px;margin:14px auto 36px">We're selective with who we work with. If your brand is ready to level up, let's talk.</p>
+      <button class="btn btn-gold" onclick="go('contact')">Start a Project</button>
+    </div>
+  </section>
+</main>
+
+<!-- SERVICES -->
+<main class="page" id="page-services">
+  <section class="phead">
+    <div class="wrap">
+      <p class="crumb"><a onclick="go('home')">Home</a> / Services</p>
+      <div class="eyebrow">What We Offer</div>
+      <h1 class="ptitle">Services built<br>for <span class="grad">ambitious</span><br>brands.</h1>
+      <p class="psub">From a single mark to a full brand world — we do the work that makes you unforgettable.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">Core Offerings</div>
+      <h2 class="sh">What We Do</h2>
+      <div class="grid g2" style="margin-top:32px">
+        <div class="card"><div class="card-ico">◈</div><h3>Logo Design</h3><p>A logo is the cornerstone of your brand. We create distinctive marks — wordmarks, monograms, emblems — built to work everywhere from a business card to a billboard.</p></div>
+        <div class="card"><div class="card-ico">◉</div><h3>Brand Identity</h3><p>Complete visual systems that define your brand: logo suite, colour palette, typography, imagery style, and usage rules that keep everything consistent.</p></div>
+        <div class="card"><div class="card-ico">▣</div><h3>Social Media Design</h3><p>Scroll-stopping content templates, profile aesthetics, and campaign visuals that make your social presence unmistakable and professional.</p></div>
+        <div class="card"><div class="card-ico">◇</div><h3>Packaging Design</h3><p>Tactile brand experiences that sell on shelf and unbox beautifully. From concept to print-ready, we handle the full process.</p></div>
+        <div class="card"><div class="card-ico">▲</div><h3>Brand Guidelines</h3><p>A living document that teaches anyone — from your team to your printers — how to use your brand correctly, consistently, and confidently.</p></div>
+        <div class="card"><div class="card-ico">⊕</div><h3>Visual Direction</h3><p>Art direction for campaigns, photography briefs, and creative concept development. We define the vision so every piece of content feels cohesive.</p></div>
+      </div>
+      <div class="eyebrow" style="margin-top:80px">How It Works</div>
+      <h2 class="sh">Our Process</h2>
+      <p class="sp">A clear, collaborative process from first call to final file.</p>
+      <div class="process">
+        <div class="pstep"><div class="pstep-n">01</div><div class="pstep-t">Discovery Call</div><p class="pstep-d">30 minutes to understand your brand, goals, audience, and what success looks like for you.</p></div>
+        <div class="pstep"><div class="pstep-n">02</div><div class="pstep-t">Proposal & Brief</div><p class="pstep-d">We send a tailored proposal with scope, timeline, and investment. Once agreed, we write the creative brief.</p></div>
+        <div class="pstep"><div class="pstep-n">03</div><div class="pstep-t">Design & Refine</div><p class="pstep-d">We present initial concepts, gather your feedback, and refine until we've nailed it. Two rounds included.</p></div>
+        <div class="pstep"><div class="pstep-n">04</div><div class="pstep-t">Final Delivery</div><p class="pstep-d">Production-ready files in all formats, a brand guide, and a handover call to make sure you're set up for success.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center">Get Started</div>
+      <h2 class="sh">Tell us about<br>your project.</h2>
+      <p class="sp" style="max-width:400px;margin:14px auto 36px">We'd love to hear what you're building. Drop us a message and we'll come back within 48 hours.</p>
+      <button class="btn btn-gold" onclick="go('contact')">Get in Touch</button>
+    </div>
+  </section>
+</main>
+
+<!-- ABOUT -->
+<main class="page" id="page-about">
+  <section class="phead">
+    <div class="wrap">
+      <p class="crumb"><a onclick="go('home')">Home</a> / About</p>
+      <div class="eyebrow">Our Story</div>
+      <h1 class="ptitle">The studio<br><span class="grad">behind</span> the<br>work.</h1>
+      <p class="psub">A boutique creative studio obsessed with the craft of branding. We believe great design isn't decoration — it's strategy made visible.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">Mission</div>
+      <p class="mission">We exist to give ambitious brands <em>an identity worth remembering</em>. Through deliberate craft, bold thinking, and relentless refinement, we turn ideas into visual systems that <em>outlast trends</em> and <em>command respect</em>.</p>
+      <div class="gold-div"></div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">What We Stand For</div>
+      <h2 class="sh">Our Values</h2>
+      <div class="grid g2" style="margin-top:32px">
+        <div class="card"><div class="card-ico">◈</div><h3>Bold by Default</h3><p>We don't design to blend in. Every decision is made to stand out in a world drowning in sameness.</p></div>
+        <div class="card"><div class="card-ico">◉</div><h3>Refined to the Detail</h3><p>The space between letters, the weight of a line — everything matters. We sweat the small stuff so you don't have to.</p></div>
+        <div class="card"><div class="card-ico">▲</div><h3>Purposeful, Always</h3><p>Beauty without function is decoration. Every visual choice we make serves a strategic purpose tied to your goals.</p></div>
+        <div class="card"><div class="card-ico">◇</div><h3>Built to Last</h3><p>We design for ten years, not ten months. Timeless work that grows with your brand rather than needing a rebrand every season.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">How We Work</div>
+      <h2 class="sh">The Unboxable Approach</h2>
+      <p class="sp">We work with a small roster of clients at a time, ensuring every project gets our full attention.</p>
+      <div class="process">
+        <div class="pstep"><div class="pstep-n">01</div><div class="pstep-t">Discovery</div><p class="pstep-d">Deep dive into your brand, market, audience, and ambitions to find the real brief beneath the brief.</p></div>
+        <div class="pstep"><div class="pstep-n">02</div><div class="pstep-t">Strategy</div><p class="pstep-d">We define your positioning, personality, and visual direction before a single pixel is drawn.</p></div>
+        <div class="pstep"><div class="pstep-n">03</div><div class="pstep-t">Creation</div><p class="pstep-d">Craft, refine, and craft again. We present considered concepts, not a wall of options.</p></div>
+        <div class="pstep"><div class="pstep-n">04</div><div class="pstep-t">Delivery</div><p class="pstep-d">Full production-ready files, guidelines, and ongoing support to ensure your brand launches perfectly.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center">Work With Us</div>
+      <h2 class="sh">Ready to build<br>something great?</h2>
+      <p class="sp" style="max-width:400px;margin:14px auto 36px">We take on a limited number of projects each quarter. Reach out early.</p>
+      <button class="btn btn-gold" onclick="go('contact')">Start a Conversation</button>
+    </div>
+  </section>
+</main>
+
+<!-- CONTACT -->
+<main class="page" id="page-contact">
+  <section class="phead">
+    <div class="wrap">
+      <p class="crumb"><a onclick="go('home')">Home</a> / Contact</p>
+      <div class="eyebrow">Let's Talk</div>
+      <h1 class="ptitle">Start your<br><span class="grad">next</span><br>project.</h1>
+      <p class="psub">Tell us what you're building and we'll come back with a tailored plan within 48 hours.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <div class="eyebrow" style="margin-bottom:26px">Send a Message</div>
+          <form onsubmit="return false">
+            <div class="form-row">
+              <div class="form-field"><label class="flabel">First Name</label><input class="finput" type="text" placeholder="Alex"></div>
+              <div class="form-field"><label class="flabel">Last Name</label><input class="finput" type="text" placeholder="Johnson"></div>
+            </div>
+            <div class="form-field"><label class="flabel">Email Address</label><input class="finput" type="email" placeholder="alex@company.com"></div>
+            <div class="form-field">
+              <label class="flabel">Service</label>
+              <select class="fselect">
+                <option value="" disabled selected>Select a service...</option>
+                <option>Logo Design</option><option>Brand Identity</option><option>Social Media Design</option>
+                <option>Packaging Design</option><option>Brand Guidelines</option><option>Visual Direction</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-field"><label class="flabel">Tell Us About Your Project</label><textarea class="ftextarea" placeholder="What are you building? What do you need? Any context that helps us understand your vision..."></textarea></div>
+            <button type="submit" class="btn btn-gold btn-wide">Send Message</button>
+          </form>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:26px">Get in Touch</div>
+          <div class="cinfo-item">
+            <div class="cinfo-ico">✉</div>
+            <div><div class="cinfo-lbl">Email</div><div class="cinfo-val"><a href="mailto:hello@unboxabledesign.com">hello@unboxabledesign.com</a></div></div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-ico">◎</div>
+            <div><div class="cinfo-lbl">Instagram</div><div class="cinfo-val"><a href="https://instagram.com/unboxabledesign" target="_blank" rel="noopener">@unboxabledesign</a></div></div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-ico">◷</div>
+            <div><div class="cinfo-lbl">Response Time</div><div class="cinfo-val">Within 48 hours</div></div>
+          </div>
+          <div class="cinfo-item" style="border-bottom:none">
+            <div class="cinfo-ico">◈</div>
+            <div><div class="cinfo-lbl">Project Start</div><div class="cinfo-val">Available Q3 2025</div></div>
+          </div>
+          <div class="cinfo-note">
+            <div class="cinfo-note-t">A note on process</div>
+            <p>We work with a small number of clients at a time to ensure every project gets full attention. The sooner you reach out, the sooner we can schedule your slot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">UNBOXABLE<span class="g">.</span></div>
+        <p class="footer-tagline">A premium creative studio crafting brands that command attention and endure.</p>
+      </div>
+      <div>
+        <div class="footer-col-t">Navigate</div>
+        <a onclick="go('portfolio')">Portfolio</a>
+        <a onclick="go('services')">Services</a>
+        <a onclick="go('about')">About</a>
+        <a onclick="go('contact')">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-t">Connect</div>
+        <a href="mailto:hello@unboxabledesign.com">hello@unboxabledesign.com</a>
+        <a href="https://instagram.com/unboxabledesign" target="_blank" rel="noopener">@unboxabledesign</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Unboxable Design. All rights reserved.</span>
+      <span>Design Without Limits.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page)?.classList.add('active');
+  document.querySelectorAll('.nl').forEach(l=>l.classList.remove('active'));
+  document.querySelector('.nl[data-nav="'+page+'"]')?.classList.add('active');
+  document.getElementById('menu').classList.remove('open');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+document.getElementById('burger').addEventListener('click',function(){
+  document.getElementById('menu').classList.toggle('open');
+});
+document.addEventListener('click',function(e){
+  const m=document.getElementById('menu');
+  const b=document.getElementById('burger');
+  if(m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){
+    m.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
